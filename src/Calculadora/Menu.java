@@ -18,7 +18,7 @@ public class Menu {
         Subtração subtrair = new Subtração();
         Multiplicação multiplicar = new Multiplicação();
         Divisão dividir = new Divisão();
-
+        System.out.println("alteração");
         do {
             System.out.println("operação:\n" +
                     "\n" +
