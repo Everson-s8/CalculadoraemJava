@@ -19,6 +19,7 @@ public class Menu {
         Multiplicação multiplicar = new Multiplicação();
         Divisão dividir = new Divisão();
         Potenciação potencia = new Potenciação();
+        Raiz raizqualquer = new Raiz();
 
         do {
             System.out.println("operação:\n" +
@@ -27,7 +28,9 @@ public class Menu {
                     "    2 = subtração;\n" +
                     "    3 = multiplicação\n" +
                     "    4 = divisão\n" +
-                    "    5 = potenciação\n");
+                    "    5 = potenciação\n"+
+                    "    6 = Raiz\n");
+
             operacao = input.nextInt();
 
             System.out.println("Entre com o 1º valor");
@@ -63,6 +66,13 @@ public class Menu {
                         resul= potencia.operacao1(number1,number2);
                         System.out.println(operacao + " " + " " + number1 + " " + number2 + " = " + resul);
                         historico.add(String.format("%s;%s;%s = %s", number1, number2 , 5, resul));
+                        break;
+                    case 6:
+                        resul= raizqualquer.operacao1(number1,number2);
+                        System.out.println(operacao + " " + " " + number1 + " " + number2 + " = " + resul);
+                        historico.add(String.format("%s;%s;%s = %s", number1, number2 , 6, resul));
+                        break;
+
                 }
             }catch (RuntimeException e){
                 System.out.println(e.getMessage());
