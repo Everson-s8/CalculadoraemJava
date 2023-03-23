@@ -24,7 +24,7 @@ public class Menu {
         Raiz raizqualquer = new Raiz();
 
 
-        do {
+
             System.out.println("""
                     operação:\s
                         0 = Sair;\s
@@ -36,6 +36,7 @@ public class Menu {
                         6 = Raiz\s
                     """);
 
+            do {
             String lista = input.next();
             listagem.add(lista);
             String[] corta = lista.split(";");
