@@ -13,81 +13,75 @@ public class Menu {
         int operacao;
         double resul;
         ArrayList<String> historico = new ArrayList<>();
+        ArrayList<String> listagem = new ArrayList<>();
+        ArrayList<Double> listagemconvertida = new ArrayList<>();
 
-        Adição adicionar = new Adição();
-        Subtração subtrair = new Subtração();
-        Multiplicação multiplicar = new Multiplicação();
-        Divisão dividir = new Divisão();
-        Potenciação potencia = new Potenciação();
+        Adicao adicionar = new Adicao();
+        Subtracao subtrair = new Subtracao();
+        Multiplicacao multiplicar = new Multiplicacao();
+        Divisao dividir = new Divisao();
+        Potenciacao potencia = new Potenciacao();
         Raiz raizqualquer = new Raiz();
 
+
         do {
-            System.out.println("operação:\n" +
-                    "\n" +
-                    "    1 = soma;\n" +
-                    "    2 = subtração;\n" +
-                    "    3 = multiplicação\n" +
-                    "    4 = divisão\n" +
-                    "    5 = potenciação\n"+
-                    "    6 = Raiz\n");
+            System.out.println("""
+                    operação:\s
+                        0 = Sair;\s
+                        1 = soma;\s
+                        2 = subtração;\s
+                        3 = multiplicação\s
+                        4 = divisão\s
+                        5 = potenciação\s
+                        6 = Raiz\s
+                    """);
 
-            operacao = input.nextInt();
-
-            System.out.println("Entre com o 1º valor");
-            number1 = input.nextDouble();
-
-            System.out.println("Entre com o 2º valor ");
-            number2 = input.nextDouble();
+            String lista = input.next();
+            listagem.add(lista);
+            String[] corta = lista.split(";");
+            number1 = Double.parseDouble(corta[0]);
+            number2 = Double.parseDouble(corta[1]);
+            operacao = Integer.parseInt(corta[2]);
 
             try {
                 Validacao.validar(number2, operacao);
-                switch (operacao){
+                switch (operacao) {
                     case 1:
-                        resul = adicionar.operacao1(number1,number2);
-                        System.out.println(operacao + " " + " " + number1 + " " + number2 + " = " + resul);
-                        historico.add(String.format("%s;%s;%s = %s", number1, number2 , 1, resul));
+                        resul = adicionar.operacao1(number1, number2);
+                        historico.add(String.format("%s;%s;%s = %s", number1, number2, 1, resul));
                         break;
                     case 2:
-                        resul = subtrair.operacao1(number1,number2);
-                        System.out.println(operacao + " " + " " + number1 + " " + number2 + " = " + resul);
-                        historico.add(String.format("%s;%s;%s = %s", number1, number2 , 2, resul));
+                        resul = subtrair.operacao1(number1, number2);
+                        historico.add(String.format("%s;%s;%s = %s", number1, number2, 2, resul));
                         break;
                     case 3:
-                        resul = multiplicar.operacao1(number1,number2);
-                        System.out.println(operacao + " " + " " + number1 + " " + number2 + " = " + resul);
-                        historico.add(String.format("%s;%s;%s = %s", number1, number2 , 3, resul));
+                        resul = multiplicar.operacao1(number1, number2);
+                        historico.add(String.format("%s;%s;%s = %s", number1, number2, 3, resul));
                         break;
                     case 4:
-                        resul = dividir.operacao1(number1,number2);
-                        System.out.println(operacao + " " + " " + number1 + " " + number2 + " = " + resul);
-                        historico.add(String.format("%s;%s;%s = %s", number1, number2 , 4, resul));
+                        resul = dividir.operacao1(number1, number2);
+                        historico.add(String.format("%s;%s;%s = %s", number1, number2, 4, resul));
                         break;
                     case 5:
-                        resul= potencia.operacao1(number1,number2);
-                        System.out.println(operacao + " " + " " + number1 + " " + number2 + " = " + resul);
-                        historico.add(String.format("%s;%s;%s = %s", number1, number2 , 5, resul));
+                        resul = potencia.operacao1(number1, number2);
+                        historico.add(String.format("%s;%s;%s = %s", number1, number2, 5, resul));
                         break;
                     case 6:
-                        resul= raizqualquer.operacao1(number1,number2);
-                        System.out.println(operacao + " " + " " + number1 + " " + number2 + " = " + resul);
-                        historico.add(String.format("%s;%s;%s = %s", number1, number2 , 6, resul));
+                        resul = raizqualquer.operacao1(number1, number2);
+                        historico.add(String.format("%s;%s;%s = %s", number1, number2, 6, resul));
                         break;
 
                 }
-            }catch (RuntimeException e){
+            } catch (RuntimeException e) {
                 System.out.println(e.getMessage());
             }
 
-            System.out.println("Voce deseja fazer outro calculo , digite 1 se sim ou 2 se não");
-            repeticao = input.nextInt();
+        } while (operacao != 0);
 
-
-        }while (repeticao != 2);
-
-        for (String resultadofinal: historico) {
+        for (String resultadofinal : historico) {
             System.out.println(resultadofinal);
         }
 
-        }
     }
+}
 
